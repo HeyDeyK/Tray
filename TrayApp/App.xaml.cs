@@ -9,9 +9,6 @@ using System.ComponentModel;
 
 namespace TrayApp
 {
-    /// <summary>
-    /// Interakční logika pro App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon;
@@ -35,8 +32,8 @@ namespace TrayApp
         {
             _notifyIcon.ContextMenuStrip =
               new System.Windows.Forms.ContextMenuStrip();
-            _notifyIcon.ContextMenuStrip.Items.Add("MainWindow...").Click += (s, e) => ShowMainWindow();
-            _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ExitApplication();
+            _notifyIcon.ContextMenuStrip.Items.Add("TrayApp").Click += (s, e) => ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Items.Add("Vypnout").Click += (s, e) => ExitApplication();
         }
 
         private void ExitApplication()
@@ -46,6 +43,7 @@ namespace TrayApp
             _notifyIcon.Dispose();
             _notifyIcon = null;
             Console.WriteLine("ahoj");
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void ShowMainWindow()
@@ -69,7 +67,7 @@ namespace TrayApp
             if (!_isExit)
             {
                 e.Cancel = true;
-                MainWindow.Hide(); // A hidden window can be shown again, a closed one not
+                MainWindow.Hide();
             }
         }
     }

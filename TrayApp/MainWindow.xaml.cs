@@ -27,5 +27,10 @@ namespace TrayApp
             InitializeComponent();
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }
